@@ -111,64 +111,71 @@ function App() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center gap-2 mb-12">
-            <Briefcase className="text-indigo-600" size={24} />
-            <h2 className="text-3xl font-bold">Projects</h2>
+<section className="py-20 px-4">
+  <div className="max-w-4xl mx-auto">
+    <div className="flex items-center gap-2 mb-12">
+      <Briefcase className="text-indigo-600" size={24} />
+      <h2 className="text-3xl font-bold">Projects</h2>
+    </div>
+    <div className="grid md:grid-cols-2 gap-12">
+      {[
+        {
+          title: 'Academic-Result-Dashboard',
+          description: 'An interactive academic dashboard showcasing student performance, grades, and trends with real-time visualizations.',
+          image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80',
+          link: 'https://github.com/lalittsharma/Academic_Result_Dashboard'
+        },
+        {
+          title: 'Call-Center-Analytics-Dashboard',
+          description: 'A Power BI based dashboard that delivers in-depth call center analytics, tracking key performance metrics and optimizing operations.',
+          image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
+          link: 'https://github.com/lalittsharma/Call-Center-Analytics-Dashboard-using-Power-BI-main'
+        },
+        {
+          title: 'Global-Super-Store-DashBoard',
+          description: 'A comprehensive dashboard for global retail, monitoring sales, inventory, and customer insights across multiple super stores.',
+          image: 'https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80',
+          link: 'https://github.com/lalittsharma/Global-Super-Store-DashBoard'
+        },
+        {
+          title: 'Ola-Dashbord',
+          description: 'A dynamic ride-sharing dashboard offering real-time data on trip statistics, driver performance, and operational insights.',
+          image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=800&q=80',
+          link: 'https://github.com/lalittsharma/Ola-Dashbord'
+        },
+      ].map((project, index) => (
+        <motion.div
+          key={project.title}
+          className="group relative overflow-hidden rounded-lg shadow-lg"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: index * 0.1 }}
+        >
+          <img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-64 object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+            <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
+            <p className="text-gray-200 mb-4">{project.description}</p>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              href={project.link}
+              className="inline-flex items-center gap-2 text-white hover:text-indigo-200 transition-transform"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              View Project <ExternalLink size={16} />
+            </motion.a>
           </div>
-          <div className="grid md:grid-cols-2 gap-12">
-            {[
-              {
-                title: 'Academic-Result-Dashboard',
-                description: 'An interactive academic dashboard showcasing student performance, grades, and trends with real-time visualizations.',
-                image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80',
-                link: 'https://github.com/lalittsharma/Academic_Result_Dashboard'
-              },
-              {
-                title: 'Call-Center-Analytics-Dashboard',
-                description: 'A Power BI based dashboard that delivers in-depth call center analytics, tracking key performance metrics and optimizing operations.',
-                image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
-                link: 'https://github.com/lalittsharma/Call-Center-Analytics-Dashboard-using-Power-BI-main'
-              },
-              {
-                title: 'Global-Super-Store-DashBoard',
-                description: 'A comprehensive dashboard for global retail, monitoring sales, inventory, and customer insights across multiple super stores.',
-                image: 'https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80',
-                link: 'https://github.com/lalittsharma/Global-Super-Store-DashBoard'
-              },
-              {
-                title: 'Ola-Dashbord',
-                description: 'A dynamic ride-sharing dashboard offering real-time data on trip statistics, driver performance, and operational insights.',
-                image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=800&q=80',
-                link: 'https://github.com/lalittsharma/Ola-Dashbord'
-              },
-            ].map((project) => (
-              <div key={project.title} className="group relative overflow-hidden rounded-lg shadow-lg">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
-                  <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
-                  <p className="text-gray-200 mb-4">{project.description}</p>
-                  <motion.a
-                     whileHover={{ scale: 1.05 }}
-                     whileTap={{ scale: 0.95 }}
-                    href={project.link}
-                    className="inline-flex items-center gap-2 text-white hover:text-indigo-200 transition-transform"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    View Project <ExternalLink size={16} />
-                    </motion.a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* Contact Section */}
       <section id="contact" className="py-20 px-4 bg-gray-100 ">

@@ -2,28 +2,73 @@ import React from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Briefcase, User, ChevronDown, Phone, MapPin } from 'lucide-react';
 import { motion } from "framer-motion";
 
+// Define page-level variants to animate the whole page
+const pageVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.75 }
+  },
+  exit: {
+    opacity: 0,
+    y: -20,
+    transition: { duration: 0.75 }
+  }
+};
+
+// Define section-level variants for the hero, about, and contact sections.
+const sectionVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.75 } }
+};
+
 function App() {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <motion.div
+      variants={pageVariants}
+      initial="initial"
+      animate="animate"
+      exit="exit"
+      className="min-h-screen bg-gray-50"
+    >
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+      <motion.section
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+        className="relative h-screen flex items-center justify-center bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500"
+      >
         <div className="absolute inset-0 bg-black/30"></div>
         <div className="relative text-center text-white px-4">
           <h1 className="text-5xl md:text-7xl font-bold mb-6">Lalit Sharma</h1>
           <p className="text-xl md:text-2xl mb-8">Data Analyst</p>
           <div className="flex justify-center gap-6">
-            <a href="https://github.com/lalittsharma" target='_blank' className="hover:text-indigo-200 transition-colors"><Github size={24} /></a>
-            <a href="https://www.linkedin.com/in/lalit-sharma-723193350/" target='_blank' className="hover:text-indigo-200 transition-colors"><Linkedin size={24} /></a>
-            <a href="mailto:mohitnegi2195@gmail.com" className="hover:text-indigo-200 transition-colors"><Mail size={24} /></a>
+            <a href="https://github.com/lalittsharma" target='_blank' className="hover:text-indigo-200 transition-colors">
+              <Github size={24} />
+            </a>
+            <a href="https://www.linkedin.com/in/lalit-sharma-723193350/" target='_blank' className="hover:text-indigo-200 transition-colors">
+              <Linkedin size={24} />
+            </a>
+            <a href="mailto:mohitnegi2195@gmail.com" className="hover:text-indigo-200 transition-colors">
+              <Mail size={24} />
+            </a>
           </div>
           <a href="#about" className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
             <ChevronDown size={32} />
           </a>
         </div>
-      </section>
+      </motion.section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-4">
+      <motion.section
+        id="about"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-20 px-4"
+      >
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2 mb-8">
             <User className="text-indigo-600" size={24} />
@@ -48,7 +93,7 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Skills Section */}
       <section className="py-20 px-4 bg-gray-100">
@@ -111,74 +156,81 @@ function App() {
       </section>
 
       {/* Projects Section */}
-<section className="py-20 px-4">
-  <div className="max-w-4xl mx-auto">
-    <div className="flex items-center gap-2 mb-12">
-      <Briefcase className="text-indigo-600" size={24} />
-      <h2 className="text-3xl font-bold">Projects</h2>
-    </div>
-    <div className="grid md:grid-cols-2 gap-12">
-      {[
-        {
-          title: 'Academic-Result-Dashboard',
-          description: 'An interactive academic dashboard showcasing student performance, grades, and trends with real-time visualizations.',
-          image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80',
-          link: 'https://github.com/lalittsharma/Academic_Result_Dashboard'
-        },
-        {
-          title: 'Call-Center-Analytics-Dashboard',
-          description: 'A Power BI based dashboard that delivers in-depth call center analytics, tracking key performance metrics and optimizing operations.',
-          image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
-          link: 'https://github.com/lalittsharma/Call-Center-Analytics-Dashboard-using-Power-BI-main'
-        },
-        {
-          title: 'Global-Super-Store-DashBoard',
-          description: 'A comprehensive dashboard for global retail, monitoring sales, inventory, and customer insights across multiple super stores.',
-          image: 'https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80',
-          link: 'https://github.com/lalittsharma/Global-Super-Store-DashBoard'
-        },
-        {
-          title: 'Ola-Dashbord',
-          description: 'A dynamic ride-sharing dashboard offering real-time data on trip statistics, driver performance, and operational insights.',
-          image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=800&q=80',
-          link: 'https://github.com/lalittsharma/Ola-Dashbord'
-        },
-      ].map((project, index) => (
-        <motion.div
-          key={project.title}
-          className="group relative overflow-hidden rounded-lg shadow-lg"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: index * 0.1 }}
-        >
-          <img
-            src={project.image}
-            alt={project.title}
-            className="w-full h-64 object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
-            <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
-            <p className="text-gray-200 mb-4">{project.description}</p>
-            <motion.a
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              href={project.link}
-              className="inline-flex items-center gap-2 text-white hover:text-indigo-200 transition-transform"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View Project <ExternalLink size={16} />
-            </motion.a>
+      <section className="py-20 px-4">
+        <div className="max-w-4xl mx-auto">
+          <div className="flex items-center gap-2 mb-12">
+            <Briefcase className="text-indigo-600" size={24} />
+            <h2 className="text-3xl font-bold">Projects</h2>
           </div>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+          <div className="grid md:grid-cols-2 gap-12">
+            {[
+              {
+                title: 'Academic-Result-Dashboard',
+                description: 'An interactive academic dashboard showcasing student performance, grades, and trends with real-time visualizations.',
+                image: 'https://images.unsplash.com/photo-1529070538774-1843cb3265df?auto=format&fit=crop&w=800&q=80',
+                link: 'https://github.com/lalittsharma/Academic_Result_Dashboard'
+              },
+              {
+                title: 'Call-Center-Analytics-Dashboard',
+                description: 'A Power BI based dashboard that delivers in-depth call center analytics, tracking key performance metrics and optimizing operations.',
+                image: 'https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&w=800&q=80',
+                link: 'https://github.com/lalittsharma/Call-Center-Analytics-Dashboard-using-Power-BI-main'
+              },
+              {
+                title: 'Global-Super-Store-DashBoard',
+                description: 'A comprehensive dashboard for global retail, monitoring sales, inventory, and customer insights across multiple super stores.',
+                image: 'https://images.unsplash.com/photo-1542831371-d531d36971e6?auto=format&fit=crop&w=800&q=80',
+                link: 'https://github.com/lalittsharma/Global-Super-Store-DashBoard'
+              },
+              {
+                title: 'Ola-Dashbord',
+                description: 'A dynamic ride-sharing dashboard offering real-time data on trip statistics, driver performance, and operational insights.',
+                image: 'https://images.unsplash.com/photo-1511367461989-f85a21fda167?auto=format&fit=crop&w=800&q=80',
+                link: 'https://github.com/lalittsharma/Ola-Dashbord'
+              },
+            ].map((project, index) => (
+              <motion.div
+                key={project.title}
+                className="group relative overflow-hidden rounded-lg shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+              >
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent p-6 flex flex-col justify-end">
+                  <h3 className="text-white text-xl font-bold mb-2">{project.title}</h3>
+                  <p className="text-gray-200 mb-4">{project.description}</p>
+                  <motion.a
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    href={project.link}
+                    className="inline-flex items-center gap-2 text-white hover:text-indigo-200 transition-transform"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    View Project <ExternalLink size={16} />
+                  </motion.a>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-20 px-4 bg-gray-100 ">
+      <motion.section
+        id="contact"
+        variants={sectionVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-20 px-4 bg-gray-100"
+      >
         <div className="max-w-4xl mx-auto">
           <div className="flex items-center gap-2 mb-12 justify-center">
             <Mail className="text-indigo-600" size={24} />
@@ -232,13 +284,13 @@ function App() {
             </div>
           </div>
         </div>
-      </section>
+      </motion.section>
 
       {/* Footer */}
       <footer className="py-8 px-4 text-center text-gray-600">
         <p>© 2025 Lalit Sharma. All rights reserved.</p>
       </footer>
-    </div>
+    </motion.div>
   );
 }
 

@@ -50,7 +50,7 @@ function App() {
             <a href="https://www.linkedin.com/in/lalit-sharma-723193350/" target='_blank' className="hover:text-indigo-200 transition-colors">
               <Linkedin size={24} />
             </a>
-            <a href="mailto:mohitnegi2195@gmail.com" className="hover:text-indigo-200 transition-colors">
+            <a href="mailto:sharmalalit15407@gmail.com" className="hover:text-indigo-200 transition-colors">
               <Mail size={24} />
             </a>
           </div>
@@ -245,7 +245,7 @@ function App() {
                 </div>
                 <div>
                   <p className="text-sm text-gray-600">Email</p>
-                  <a href="mailto:sharmalalit@example.com" className="text-lg font-medium hover:text-indigo-600 transition-colors">
+                  <a href="mailto:sharmalalit15407@gmail.com" className="text-lg font-medium hover:text-indigo-600 transition-colors">
                     sharmalalit15407@gmail.com
                   </a>
                 </div>
@@ -257,7 +257,7 @@ function App() {
                 <div>
                   <p className="text-sm text-gray-600">Phone</p>
                   <a href="tel:+9897857435" className="text-lg font-medium hover:text-indigo-600 transition-colors">
-                    +91 9897857435
+                    +91-9897857435
                   </a>
                 </div>
               </div>

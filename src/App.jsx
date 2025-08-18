@@ -76,7 +76,7 @@ function App() {
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <img
-              src="https://media.licdn.com/dms/image/v2/D4D03AQF_gWQ0WXh2GA/profile-displayphoto-shrink_800_800/B4DZTk.ee2HkAg-/0/1739008371462?e=1744848000&v=beta&t=Pl4K_794Rv2tUIDHRtF0bawnBo0rsWnNz9EEJ8NkZnM"
+              src="../src/assets/profile.jpg"
               alt="Profile"
               className="rounded-lg shadow-lg"
             />

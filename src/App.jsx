@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Mail, ExternalLink, Code2, Briefcase, User, ChevronDown, Phone, MapPin } from 'lucide-react';
+import profileImage from './assets/profile.jpg';
 import { motion } from "framer-motion";
 
 // Define page-level variants to animate the whole page
@@ -76,9 +77,9 @@ function App() {
           </div>
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <img
-              src="../src/assets/profile.jpg"
+              src={profileImage}
               alt="Profile"
-              className="rounded-lg shadow-lg"
+              className="rounded-lg shadow-lg w-full h-auto"
             />
             <div>
               <p className="text-gray-600 leading-relaxed mb-6">

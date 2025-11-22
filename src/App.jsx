@@ -153,6 +153,29 @@ function App() {
               </motion.div>
             ))}
           </div>
+          <div className="space-y-8">
+            {[
+              {
+                title: 'Operations & Data Management',
+                company: 'Demorgia Consulting Services Pvt.Ltd.',
+                duration: 'Feb 2025 - Oct 2025',
+                description: '“I worked at Demorgia as an Operations Executive, where I managed data on Excel and Google Sheets and handled various operational tasks on the company portal.'
+              }
+            ].map((job, index) => (
+              <motion.div
+                key={job.title}
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: index * 0.2 }}
+              >
+                <h3 className="text-xl font-semibold">{job.title}</h3>
+                <p className="text-indigo-600 font-medium">{job.company} &middot; {job.duration}</p>
+                <p className="mt-4 text-gray-600">{job.description}</p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

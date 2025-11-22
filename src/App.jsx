@@ -159,7 +159,7 @@ function App() {
                 title: 'Operations & Data Management',
                 company: 'Demorgia Consulting Services Pvt.Ltd.',
                 duration: 'Feb 2025 - Oct 2025',
-                description: '“I worked at Demorgia as an Operations Executive, where I managed data on Excel and Google Sheets and handled various operational tasks on the company portal.'
+                description: 'I worked at Demorgia as an Operations Executive, where I managed data on Excel and Google Sheets and handled various operational tasks on the company portal.'
               }
             ].map((job, index) => (
               <motion.div
